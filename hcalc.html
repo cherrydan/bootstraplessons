@@ -37,7 +37,7 @@
            class="form-control form-control-lg">
            <input type="number" id="krSrok" placeholder="Введите срок кредита...(в месяцах)"
            class="form-control form-control-lg">
-           <input type="number" id="krProc" placeholder="Введите процент кредита..."
+           <input type="number" step="any" id="krProc" placeholder="Введите процент кредита..."
            class="form-control form-control-lg">
            <br><br>
            <div class="center">
@@ -47,25 +47,43 @@
          </div>
        </form>
 
-      <br><br><br>
 
-       <div class="card alert-primary">
-         <div class="card-block">
-           <h4>Ежемесячный платёж</h4>
-         </div>
-       </div>
-
-      <div class="card alert-primary">
-        <div class="card-block">
-          <h4>Переплата за весь срок</h4>
-        </div>
-      </div>
 
      </div>
    </div>
  </div>
 
 <script>
+
+function hcalc(sum, period, rate) {
+
+  var i,
+  koef, result;
+
+  i = rate / 1200;
+
+  koef = (i * (Math.pow(1 + i, period))) / (Math.pow(1 + i, period) - 1);
+
+  result = koef * sum;
+  return result;
+
+
+  }
+
+function onClick() {
+  var proc = parseFloat(document.getElementById("krProc").value);
+  var summa = parseInt(document.getElementById("krSum").value);
+  var srok = parseInt(document.getElementById("krSrok").value);
+  var resStr = String(hcalc(summa, srok, proc).toFixed(2)) + " руб. ";
+
+ //TODO: сделать вывод при помощи modal.js
+  
+
+  }
+
+document.getElementById("btnCalc").onclick = onClick;
+
+
 
 </script>
 
