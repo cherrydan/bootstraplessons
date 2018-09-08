@@ -72,12 +72,29 @@ function hcalc(sum, period, rate) {
 
 function onClick() {
   var proc = parseFloat(document.getElementById("krProc").value);
+  if (proc == 0) {
+    alert('Процент по кредиту не может быть равен 0!');
+  }
+  else {
   var summa = parseInt(document.getElementById("krSum").value);
   var srok = parseInt(document.getElementById("krSrok").value);
-  var resStr = String(hcalc(summa, srok, proc).toFixed(2)) + " руб. ";
+  var platezhRes = hcalc(summa, srok, proc).toFixed(2);
+  var resStr = String(platezhRes + " руб. ");
+  var pereplata = (platezhRes * srok) - summa;
 
- //TODO: сделать вывод при помощи modal.js
-  
+  //alert("Ежемесячный платёж: " + resStr);
+
+  //alert("Переплата за весь срок: " + String(pereplata.toFixed(2)) + " руб.");
+
+  //TODO: сделать вывод при помощи modal.js
+
+
+}
+
+
+
+
+
 
   }
 
