@@ -48,10 +48,10 @@
        </form>
 
 
-
      </div>
    </div>
  </div>
+
 
 <script>
 
@@ -82,21 +82,16 @@ function onClick() {
   var resStr = String(platezhRes + " руб. ");
   var pereplata = (platezhRes * srok) - summa;
 
-  //alert("Ежемесячный платёж: " + resStr);
 
-  //alert("Переплата за весь срок: " + String(pereplata.toFixed(2)) + " руб.");
+  alert("Ежемесячный платёж: " + resStr);
 
-  //TODO: сделать вывод при помощи modal.js
+  alert("Переплата за весь срок: " + String(pereplata.toFixed(2)) + " руб.");
+
 
 
 }
 
-
-
-
-
-
-  }
+}
 
 document.getElementById("btnCalc").onclick = onClick;
 
